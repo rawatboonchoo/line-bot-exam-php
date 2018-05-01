@@ -29,7 +29,8 @@ if (!is_null($events['events'])) {
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
-				'replyToken' => $replyToken,
+				//'replyToken' => $replyToken,
+				'replyToken' => 'TEST BOTLINE',
 				'messages' => [$messages],
 			];
 			$post = json_encode($data);
@@ -44,8 +45,8 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			#echo $result . "\r\n";
-			echo "test";
+			echo $result . "\r\n";
+			
 		}
 	}
 }
