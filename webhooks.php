@@ -18,7 +18,7 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$text = $event['source']['userId'];
 			//$text_txt = 'Hello bot line';
-			$txt = $events['message']['type'];
+			$txt = $events['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
