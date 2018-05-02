@@ -17,8 +17,8 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			$text = $event['source']['userId'];
-			//$text_txt = 'Hello bot line';
-			$txt = $events['message']['text'];
+			//$text_txt = 'Hello bot line';	
+   			$text_txt = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
@@ -30,7 +30,7 @@ if (!is_null($events['events'])) {
 					];
 			 $messages_txt = [
 					    'type' => 'text',
-					    'text' => $txt
+					    'text' => $text_txt
 	
 					];
 			 $messages_sticker = [
