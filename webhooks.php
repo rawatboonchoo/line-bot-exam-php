@@ -24,14 +24,6 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				{
-         			'type' => 'text',
-				'text' => 'สวัสดี, User'
-       				},
-        			{
-         			'type' => 'text',
-				'text' => $text_txt
-        			},
-				{
 				'type' => 'text',
 				'text' => $text
 				}
