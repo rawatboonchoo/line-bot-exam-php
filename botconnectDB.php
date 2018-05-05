@@ -11,6 +11,9 @@
 				echo 'is not can not DB: '.mysqli_connect_error();
 				}else{
           echo 'Connected DB Mybook';
+					
+			mysqli_query("");		
+					
         }
 
 
