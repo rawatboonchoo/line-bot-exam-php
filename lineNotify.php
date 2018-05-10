@@ -1,5 +1,7 @@
-$Token = $_GET["Token"];
-$message = $_GET["message "];
+<?php
+
+$Token = 'sMuxhGNSODqqlCbFAQRXOuitf8QDph91RIMNP3pt0Uh';
+$message = 'https://www.lotto.ktbnetbank.com/';
 
 line_notify($Token, $message);
 
