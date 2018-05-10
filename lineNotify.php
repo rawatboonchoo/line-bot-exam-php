@@ -1,6 +1,6 @@
 <?php
 
-echo 'line notify';
+echo 'line notify => ';
 
 $Token = 'sMuxhGNSODqqlCbFAQRXOuitf8QDph91RIMNP3pt0Uh';
 $message = 'https://www.lotto.ktbnetbank.com/';
