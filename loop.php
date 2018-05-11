@@ -75,11 +75,13 @@ if (!is_null($events['events'])) {
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		for ($x = 0; $x <= 10; $x++) {	
+		$x = 1; 
+		while($x <= 5) {
                     $result = curl_exec($ch);
                     curl_close($ch);
                     echo $result . "\r\n";
-                }
+		  $x++;
+		}
 			
 		}
 	}
