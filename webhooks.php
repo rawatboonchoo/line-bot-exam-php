@@ -19,6 +19,7 @@ if (!is_null($events['events'])) {
 			$text = $event['source']['userId'];
 			//$text_txt = 'Hello bot line';	
    			$text_txt = $event['message']['text'];
+			$url = 'https://www.lotto.ktbnetbank.com/';
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
@@ -26,6 +27,11 @@ if (!is_null($events['events'])) {
 			  $messages = [
 					    'type' => 'text',
 					    'text' => $text
+	
+					];
+			$lotto = [
+					    'type' => 'text',
+					    'text' => $url
 	
 					];
 			 $messages_txt = [
@@ -56,7 +62,7 @@ if (!is_null($events['events'])) {
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages,$messages_txt,$messages_sticker,$messages_location],
+				'messages' => [$messages,$messages_txt,$messages_sticker,$messages_location,$lotto],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
