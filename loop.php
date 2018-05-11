@@ -59,7 +59,7 @@ if (!is_null($events['events'])) {
                  */
 			
 			
-            for ($x = 0; $x <= $y; $x++) {
+            for ($x = 0; $x <= 10; $x++) {
                   			// Make a POST Request to Messaging API to reply to sender
                     $url = 'https://api.line.me/v2/bot/message/reply';
                     $data = [
