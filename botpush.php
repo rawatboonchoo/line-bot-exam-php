@@ -6,7 +6,7 @@ $idPush = 'U47fc805526e21297be23ff72cb6539fe';
 $url = 'https://www.lotto.ktbnetbank.com/';
 $msg = $_GET['msg'];
 $msg1 = $_GET['msg1'];
-$message = 'temperature ==>'.$msg.'<br>Altitude ==>'.$msg1;
+$message = 'temperature ==>'.$msg.' Altitude ==>'.$msg1;
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
