@@ -5,11 +5,12 @@ $channelSecret = 'ccc3fb3084d5328cc3bb7470990552df';
 $idPush = 'U47fc805526e21297be23ff72cb6539fe';
 $url = 'https://www.lotto.ktbnetbank.com/';
 $msg = $_GET['msg'];
-$msg1 = $_GET['msg1'];
-$message = 'temperature ==>'.$msg.' Altitude ==>'.$msg1;
+#$msg1 = $_GET['msg1'];
+#$message = 'temperature ==>'.$msg.' Altitude ==>'.$msg1;
+$dataArr = $ms;
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($dataArr);
 $response = $bot->pushMessage($idPush, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
