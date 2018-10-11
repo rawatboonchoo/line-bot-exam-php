@@ -18,7 +18,7 @@
 	</head>
 	<body>
 	<video width="100%" controls>
-		  <source src="https://bk-st.mthcdn.com/storage16/videobk04/video01/2015/03/03/1425366776/1425366776_240.mp4" type="video/mp4">
+		  <source src="https://bk-st.mthcdn.com/storage16/videobk04/video01/2015/03/14/1426301308/1426301308_240.mp4" type="video/mp4">
 		
 		</video>
 
