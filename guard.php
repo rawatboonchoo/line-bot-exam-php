@@ -21,9 +21,9 @@
         <?php
         $status = $_GET['status']
         ?>
-        <input type="text" class="form-control" id="txtStatus" placeholder="" value="<?php echo $status;?>">
+        <input type="hidden" class="form-control" id="txtStatus" placeholder="" value="<?php echo $status;?>">
         
-        <input type="text" class="form-control" id="show" placeholder="" value="<?php echo $status;?>">
+        <input type="hidden" class="form-control" id="show" placeholder="" value="<?php echo $status;?>">
         
         <p id="demo"></p>
 
