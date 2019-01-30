@@ -18,6 +18,10 @@
     </head>
     <body>
         <h1 class="text-center">Hello World</h1>
+        <?php
+        $status = $_GET['status']
+        ?>
+        <input type="text" class="form-control" id="txtStatus" placeholder="Coin" value="<?php echo $status;?>">
 
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
