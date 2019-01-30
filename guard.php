@@ -21,11 +21,32 @@
         <?php
         $status = $_GET['status']
         ?>
-        <input type="text" class="form-control" id="txtStatus" placeholder="Coin" value="<?php echo $status;?>">
+        <input type="text" class="form-control" id="txtStatus" placeholder="" value="<?php echo $status;?>">
+        
+        <input type="text" class="form-control" id="show" placeholder="" value="<?php echo $status;?>">
 
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Bootstrap JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    <script>
+       if (typeof(Storage) !== "undefined") {
+            // Store
+            //localStorage.setItem("name", name);
+            //localStorage.setItem("coin", coin);
+           var status = document.getElementById('txtStatus').value;
+            localStorage.setItem("status", status);
+            // Retrieve
+            //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+            document.getElementById('show').value = localStorage.getItem("status");
+
+          
+            } else {
+            alert("Sorry, your browser does not support Web Storage...");
+            }
+
+        
+    </script>
     </body>
 </html>
