@@ -6,20 +6,10 @@
                     $db_name = "sql12276509";
 
 
-    $dbc = mysqli_connect($db_host,$db_user,$db_pass);
-    if(!$dbc) {
-        die('Not connected :' . mysqli_connect_errno());
-    }
-    
-    //select database
-    $db_select = mysqli_select_db($dbc, "sql12276509");
-    if(!$db_select) {
-        die('Cannot find any database :' . mysqli_error($dbc));
-    }
-    
-    //test
-    $query = "UPDATE status SET status_online = 'off'";
-    $result = mysql_query($query);
-    
-    mysqli_close($dbc);
+
+$con = mysql_connect("ql12.freemysqlhosting.net","sql12276509","rQ4mGrDN3u");
+if (!$con)
+{
+die('Could not connect: ' . mysql_error());
+}
 ?>
