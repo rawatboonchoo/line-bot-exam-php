@@ -17,13 +17,15 @@
         <![endif]-->
     </head>
     <body>
-        <h1 class="text-center">Hello World</h1>
+        
         <?php
         $status = $_GET['status']
         ?>
         <input type="text" class="form-control" id="txtStatus" placeholder="" value="<?php echo $status;?>">
         
         <input type="text" class="form-control" id="show" placeholder="" value="<?php echo $status;?>">
+        
+        <p id="demo"></p>
 
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -40,6 +42,10 @@
             // Retrieve
             //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
             document.getElementById('show').value = localStorage.getItem("status");
+           
+           var obj = { status: localStorage.getItem("status")};
+           var myJSON = JSON.stringify(obj);
+           document.getElementById("demo").innerHTML = myJSON;
 
           
             } else {
