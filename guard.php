@@ -47,7 +47,9 @@
             //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
             document.getElementById('show').value = localStorage.getItem("status");
            
-           
+           var obj1 = { status: localStorage.getItem("status")};
+              var myJSON1 = JSON.stringify(obj1);
+             document.getElementById("demo").innerHTML = myJSON1;
 
           
             } else {
