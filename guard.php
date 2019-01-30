@@ -33,6 +33,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
     <script>
+        var obj = { status: localStorage.getItem("status")};
+          var myJSON = JSON.stringify(obj);
+         document.getElementById("demo").innerHTML = myJSON;
+        
        if (typeof(Storage) !== "undefined") {
             // Store
             //localStorage.setItem("name", name);
@@ -43,9 +47,7 @@
             //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
             document.getElementById('show').value = localStorage.getItem("status");
            
-           var obj = { status: localStorage.getItem("status")};
-           var myJSON = JSON.stringify(obj);
-           document.getElementById("demo").innerHTML = myJSON;
+           
 
           
             } else {
