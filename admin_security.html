@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FireBase - Security</title>
+        <link rel="shortcut icon" href="https://natha-e4e83.firebaseapp.com/asset/icon/icon.png" type="image/x-icon">
+
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://natha-e4e83.firebaseapp.com/asset/css/custom.css">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        
+        <div class="container">
+            
+            <div class="page-header">
+              <h2 class="text-center">FireBase - Security ADMIN</h2>
+            </div>
+            
+              
+             <div class="page-header">
+                           
+                          </div>
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-5">
+                                <button class="btn btn-danger" type="button" onclick="on()" data-toggle="dropdown">SIGNIN ON</button>
+                                <button class="btn btn-danger" type="button" onclick="off()" data-toggle="dropdown">SIGNIN OFF</button>
+                        </div>
+                    </div>
+            </form>
+            
+             
+        </div>
+        <script>
+        function on(){
+            var Ref = firebase.database().ref("Admin");
+            Ref.update({ Status: "on" });
+            alert("DataBase ON");
+        }
+        function off(){
+            var Ref = firebase.database().ref("Admin");
+            Ref.update({ Status: "off" });
+            alert("DataBase OF");
+        }
+        
+        </script>
+        <!-- firebase -->
+         <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+         <script src="https://natha-e4e83.firebaseapp.com/asset/js/firebase.js"></script>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
