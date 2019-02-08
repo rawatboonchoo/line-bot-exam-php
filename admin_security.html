@@ -104,12 +104,13 @@
         function on(){
             var Ref = firebase.database().ref("Admin");
             Ref.update({ Status: "on" });
-            alert("DataBase ON");
+            location.reload();
         }
         function off(){
             var Ref = firebase.database().ref("Admin");
             Ref.update({ Status: "off",Ip:""});
-            alert("DataBase OF");
+            location.reload();
+            
         }
         
         </script>
