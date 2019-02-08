@@ -108,7 +108,7 @@
         }
         function off(){
             var Ref = firebase.database().ref("Admin");
-            Ref.update({ Status: "off",Ip:""});
+            Ref.update({ Status: "off",Ip: "-"});
             location.reload();
             
         }
