@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,37 +12,95 @@
         <!-- Bootstrap CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://natha-e4e83.firebaseapp.com/asset/css/custom.css">
+        <link rel="stylesheet" href="asset/css/custom.css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <style>
+        
+        .fullscreen-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 9999;
+                }
+
+                #popdiv {
+                height: 50%;
+                width: 50%;
+                text-align: center;
+                margin: auto;
+                background-color:rgba(0, 0, 0, 0.8);
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                right: -10px;
+                bottom: -10px;
+                color: aliceblue;
+                }
+</style>
     </head>
     <body>
         
-        <div class="container">
+            <div class="fullscreen-container">
+            <div id="popdiv">
+
+               
             
-            <div class="page-header">
-              <h2 class="text-center">FireBase - Security ADMIN</h2>
+                                <div class="page-header">
+                                <h3 class="text-center">FireBase - Security ADMIN</h3>
+                                </div>
+                        
+                          
+                                <br />
+                                        <h4 class="text-center" id="result"></h4>     
+                                
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                            <button class="btn btn-success" id="on" type="button" onclick="on()" data-toggle="dropdown">SIGNIN ON</button>
+                                            
+                                            <button class="btn btn-danger" id="off" type="button" onclick="off()" data-toggle="dropdown">SIGNIN OFF</button>
+                                    </div>
+                                </div>
+                        
+                        
+                         
+               
+
             </div>
-            
-              
-             <div class="page-header">
-                           
-                          </div>
-                    <div class="form-group">
-                        <div class="col-sm-10 col-sm-offset-5">
-                                <button class="btn btn-danger" type="button" onclick="on()" data-toggle="dropdown">SIGNIN ON</button>
-                                <button class="btn btn-danger" type="button" onclick="off()" data-toggle="dropdown">SIGNIN OFF</button>
-                        </div>
-                    </div>
-            </form>
-            
-             
-        </div>
+            </div>
+
+
         <script>
+        window.onload=function(){
+            $(".fullscreen-container").fadeTo(200, 1);
+            var firebaseRef = firebase.database().ref("Admin");
+            firebaseRef.once('value').then(function(dataSnapshot){ 
+                dataSnapshot.forEach(function(childSnapshot){
+                    var chileKey = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    if(chileKey =='Ip'){
+                    document.getElementById('result').innerHTML="IP : " + childData + "<br /><br />ต้องการเข้าสู้ระบบ DataBase FirseBase<br /><br /><br />";
+                    }
+                    if(childData =='on'){
+                        document.getElementById("off").disabled = false;
+                        document.getElementById("on").disabled = true;
+                    }if(childData =='off'){
+                        document.getElementById("off").disabled = true;
+                        document.getElementById("on").disabled = false;
+                    }
+                   
+                });
+            });
+
+        }
         function on(){
             var Ref = firebase.database().ref("Admin");
             Ref.update({ Status: "on" });
@@ -50,7 +108,7 @@
         }
         function off(){
             var Ref = firebase.database().ref("Admin");
-            Ref.update({ Status: "off" });
+            Ref.update({ Status: "off",Ip:""});
             alert("DataBase OF");
         }
         
@@ -60,6 +118,7 @@
          <script src="https://natha-e4e83.firebaseapp.com/asset/js/firebase.js"></script>
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
         <!-- Bootstrap JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
