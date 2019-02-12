@@ -37,7 +37,7 @@ function line_notify($Token, $message)
 	else { 
 	$result_ = json_decode($result, true); 
 	   echo "status : ".$result_['status']; echo "message : ". $result_['message'];
-	   header("Location: https://natha-e4e83.firebaseapp.com/security_sigin.html");
+	   //header("Location: https://natha-e4e83.firebaseapp.com/security_sigin.html");
         } 
 	curl_close( $chOne );   
 }
