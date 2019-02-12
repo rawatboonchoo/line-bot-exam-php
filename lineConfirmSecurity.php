@@ -4,8 +4,7 @@
 $ip = $_GET['ip'];
 $status = $_GET['status'];
 $Token = 'MqiNfilS7zUZdGB7Abh4MFRmx5Rzn4pVr6LzB5sJoNg';
-$message = 'IP : '.$ip.'ต้องการร้องขอขเ้าสู้ระบบ ==> https://shielded-temple-38831.herokuapp.com/admin_security.html';
-echo $$message;
+$message = 'IP : '.$ip.' ต้องการร้องขอเข้าสู้ระบบ firebase-security ==> https://shielded-temple-38831.herokuapp.com/admin_security.html';
 
 line_notify($Token, $message);
 
@@ -35,7 +34,7 @@ function line_notify($Token, $message)
 	else { 
 	$result_ = json_decode($result, true); 
 	   echo "status : ".$result_['status']; echo "message : ". $result_['message'];
-	   //header("Location: https://natha-e4e83.firebaseapp.com/security_sigin.html");
+	   header("Location: https://natha-e4e83.firebaseapp.com/security_sigin.html");
         } 
 	curl_close( $chOne );   
 }
