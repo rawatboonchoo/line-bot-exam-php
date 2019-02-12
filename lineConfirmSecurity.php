@@ -1,6 +1,10 @@
 <?php
 
-echo 'Confrim => ';
+//echo 'Confrim => ';
+$ip = $_GET['ip'];
+$status = $_GET['status'];
+echo $ip;
+echo $status;
 
 $Token = 'MqiNfilS7zUZdGB7Abh4MFRmx5Rzn4pVr6LzB5sJoNg';
 $message = 'https://shielded-temple-38831.herokuapp.com/admin_security.html';
