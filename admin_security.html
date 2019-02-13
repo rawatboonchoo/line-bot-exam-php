@@ -24,22 +24,23 @@
              /* background-color: antiquewhite;*/
                /* position: fixed;*/
                 margin: 0 auto;
-                margin-top: 50px;;
+                margin-top: 100px;;
                 left: 0;
                 width: 100%;
                 height: 20%;
                 z-index: 1000;
-                 
+                color:blanchedalmond;
             }
             #loader {
                 display: block;
                 position: relative;
                 left: 50%;
                 top: 50%;
-                width: 150px;
-                height: 150px;
+                width: 120px;
+                height: 120px;
                 margin: -75px 0 0 -75px;
                 border-radius: 50%;
+                background-color:rgba(0, 0, 0, 0.8);
                 border: 3px solid transparent;
                 border-top-color: #3498db;
                 -webkit-animation: spin 2s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
@@ -163,26 +164,12 @@
                                         
                                 </div>
                                 
-                                <div class="form-group">
-                                        <label for="input" class="col-sm-4 control-label"></label>
-                                    <div class="col-sm-2">
-                                            <button class="btn btn-success text-center" id="on" type="button" onclick="onSta()" data-toggle="dropdown">&nbspSIGNIN ON&nbsp</button>
-                                            
-                                    </div>
-                                </form>
-                                <div class="form-group">
-                                    <div class="col-sm-1">
-                                            <button class="btn btn-danger text-center" id="off" type="button" onclick="offSta()" data-toggle="dropdown">SIGNIN OFF</button>
-                                    </div>
-                                </div>
-
-
 
                                 <div class="form-group">
                                         
                                         <div id="loader-wrapper">
-                                                <p>FIREBASE</p>
-                                                <div id="loader"></div>
+                                                
+                                                <button id="loader" onclick="test()"></button>
                                                 
                                         </div>
                                 </div>
@@ -208,6 +195,7 @@
             $(".fullscreen-container").fadeTo(200, 1);
 
             loadFireBaseDataObjectToDropDown();
+            document.getElementById('loader-wrapper').style.visibility='hidden';
 
         }
         function loadFireBaseDataObjectToDropDown()
@@ -220,8 +208,6 @@
                     {
                         var chileKey = childSnapshot.key;
                         var childData = childSnapshot.val();
-                    //console.log("oadFireBaseDataObject ==> " + chileKey);
-                   // console.log("oadFireBaseDataObject ==> " + childData['Status']);
                         var option = document.createElement('option');
                         option.text = option.value = chileKey + " | " + childData['Status'];
                         select.add(option, 0);
@@ -233,6 +219,7 @@
             
             var key = document.getElementById("child").value;
             var res = key.split(" | ", 1);
+            console.log(res);
                     var firebaseRef = firebase.database().ref("Admin/" + res).orderByKey();
                     firebaseRef.once('value').then(function(dataSnapshot){ 
                         dataSnapshot.forEach(function(childSnapshot){
@@ -243,13 +230,16 @@
                                 document.getElementById("status").value = childData;
                                 var status = document.getElementById("status").value;
                                 if(status == 'off'){
+                                    document.getElementById('loader').innerHTML = "SIGN ON";
                                     document.getElementById("off").disabled = true;
                                     document.getElementById("on").disabled = false;
                                     
                                 }else if(status == 'on'){
+                                    document.getElementById('loader').innerHTML = "SIGN OFF";
                                     document.getElementById("off").disabled = false;
-                                            document.getElementById("on").disabled = true;
+                                    document.getElementById("on").disabled = true;
                                 }else if(status == 'request-on'){
+                                    document.getElementById('loader').innerHTML = "SIGN ON";
                                     document.getElementById("off").disabled = true;
                                     document.getElementById("on").disabled = false;
                                     
@@ -258,8 +248,12 @@
 
                         });
                     });
-
+            document.getElementById('loader-wrapper').style.visibility='visible';
             
+         }
+         function test(){
+             var xx = document.getElementById('loader').innerHTML;
+             if(xx =='SIGN ON'){onSta();}else if(xx =='SIGN OFF'){offSta();}
          }
         function onSta(){
             var obj = document.getElementById('child').value;
