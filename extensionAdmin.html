@@ -121,8 +121,10 @@
             <div id="popdiv">
 
             
+            
+            
                                 <div class="page-header">
-                                <h3 class="text-center">FireBase - Extention</h3>
+                                <h3 class="text-center">FireBase - Extention <small id="small"></small></h3>
                                 </div>
                          
                                         <div id="loader-wrapper">
@@ -157,9 +159,11 @@
                         
                         if(childData =='off'){
                             document.getElementById('loader').innerHTML = "SIGN ON";
+                            document.getElementById('small').innerHTML = "Offline";
 
                         }else if(childData =='on'){
                             document.getElementById('loader').innerHTML = "SIGN OFF";
+                            document.getElementById('small').innerHTML = "Online";
                         }
                     });
                 });
