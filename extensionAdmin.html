@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FireBase - Extension Admin</title>
+        <link rel="shortcut icon" href="https://natha-e4e83.firebaseapp.com/asset/icon/icon.png" type="image/x-icon">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="asset/css/custom.css">
+        <style>
+          #loader-wrapper {
+             /* background-color: antiquewhite;*/
+               /* position: fixed;*/
+                margin: 0 auto;
+                margin-top: 100px;;
+                left: 0;
+                width: 100%;
+                height: 20%;
+                z-index: 1000;
+                color:blanchedalmond;
+            }
+            #loader {
+                display: block;
+                position: relative;
+                left: 50%;
+                top: 50%;
+                width: 120px;
+                height: 120px;
+                margin: -75px 0 0 -75px;
+                border-radius: 50%;
+                background-color:rgba(0, 0, 0, 0.8);
+                border: 1px solid transparent;
+                border-top-color: #3498db;
+                -webkit-animation: spin 1s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+                animation: spin 1s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+            }
+             
+            #loader:before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                border-radius: 50%;
+                border: 1px solid transparent;
+                border-top-color: #e74c3c;
+                -webkit-animation: spin 1s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+                  animation: spin 1s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+            }
+             
+            #loader:after {
+                content: "";
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                border-radius: 50%;
+                border: 1px solid transparent;
+                border-top-color: #f9c922;
+                -webkit-animation: spin 1.5s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+                  animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+            }
+             
+            @-webkit-keyframes spin {
+                0%   {
+                    -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(0deg);  /* IE 9 */
+                    transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(360deg);  /* IE 9 */
+                    transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+                }
+            }
+            @keyframes spin {
+                0%   {
+                    -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(0deg);  /* IE 9 */
+                    transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+                    -ms-transform: rotate(360deg);  /* IE 9 */
+                    transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+                }
+            }
+            .fullscreen-container {
+                display: none;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 9999;
+                }
+                #popdiv {
+                height: 90%;
+                width: 90%;
+                text-align: center;
+                margin: auto;
+                background-color:rgba(0, 0, 0, 0.8);
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                right: -10px;
+                bottom: -10px;
+                color: aliceblue;
+                }
+            
+</style>
+    </head>
+    <body>
+        
+            <div class="fullscreen-container">
+            <div id="popdiv">
+
+            
+                                <div class="page-header">
+                                <h3 class="text-center">FireBase - Extention</h3>
+                                </div>
+                         
+                                        <div id="loader-wrapper">
+                                                
+                                                <button id="loader" onclick="test()"></button>
+                                                
+                                        </div>
+                                
+
+            </div>
+            </div>
+
+
+        <script>
+        window.onload=function(){
+            
+            $(".fullscreen-container").fadeTo(200, 1);
+            //loadFireBaseDataObjectToDropDown();
+            getLog();
+            //document.getElementById('loader-wrapper').style.visibility='hidden';
+            document.getElementById('loader').addEventListener('click', admin, false);
+            var check = setInterval(getLog,1);
+        }
+        function getLog(){
+            var firebaseRef = firebase.database().ref("LoginExtension").orderByKey();
+                firebaseRef.once('value').then(function(dataSnapshot)
+                {
+                    dataSnapshot.forEach(function(childSnapshot)
+                    {
+                        var chileKey = childSnapshot.key;
+                        var childData = childSnapshot.val();
+                        
+                        if(childData =='off'){
+                            document.getElementById('loader').innerHTML = "SIGN ON";
+
+                        }else if(childData =='on'){
+                            document.getElementById('loader').innerHTML = "SIGN OFF";
+                        }
+                    });
+                });
+        }
+
+
+
+        function admin(){
+            var obj = document.getElementById('loader').innerHTML;
+            if(obj == 'SIGN ON'){
+                var Ref = firebase.database().ref("LoginExtension");
+                Ref.update({ Status: "on"});
+                location.reload();
+            }else if(obj == 'SIGN OFF'){
+                var Ref = firebase.database().ref("LoginExtension");
+                Ref.update({ Status: "off"});
+                location.reload();
+            }
+          /*  var Ref = firebase.database().ref("LoginExtension");
+            Ref.update({ Status: "off"});
+            location.reload();*/
+        }
+        
+        </script>
+        <!-- firebase -->
+         <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+         <script src="https://natha-e4e83.firebaseapp.com/asset/js/firebase.js"></script>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
